@@ -312,6 +312,7 @@ export default function LendingPage() {
                 />
                 <WalletConnectGate />
               </div>
+              
             ) : activeTab === "borrow" ? (
               <div className="relative">
                 <BorrowingForm
@@ -320,16 +321,19 @@ export default function LendingPage() {
                 />
                 <WalletConnectGate />
               </div>
+              
             ) : activeTab === "repay" ? (
               <div className="relative">
                 <RepayForm onSubmit={handleRepaySubmit} />
                 <WalletConnectGate />
               </div>
+              
             ) : (
               <div className="relative">
                 <WithdrawForm onSubmit={handleWithdrawSubmit} />
                 <WalletConnectGate />
               </div>
+              
             )}
           </div>
 
