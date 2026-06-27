@@ -12,6 +12,7 @@ import type { LendingActionType } from "@/lib/lending/types";
 
 export type { LendingData, CalculationResult } from "@/lib/lending/types";
 import type { LendingData, CalculationResult } from "@/lib/lending/types";
+import WalletConnectGate from "@/components/features/lending/components/WalletConnectGate";
 
 const BorrowingForm = dynamic(
   () => import("@/components/features/lending/components/BorrowingForm"),
@@ -304,19 +305,31 @@ export default function LendingPage() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2">
             {activeTab === "lend" ? (
-              <LendingForm
-                onSubmit={handleLendingSubmit}
-                initialData={lendingData}
-              />
+              <div className="relative">
+                <LendingForm
+                  onSubmit={handleLendingSubmit}
+                  initialData={lendingData}
+                />
+                <WalletConnectGate />
+              </div>
             ) : activeTab === "borrow" ? (
-              <BorrowingForm
-                onSubmit={handleBorrowingSubmit}
-                initialData={borrowingData}
-              />
+              <div className="relative">
+                <BorrowingForm
+                  onSubmit={handleBorrowingSubmit}
+                  initialData={borrowingData}
+                />
+                <WalletConnectGate />
+              </div>
             ) : activeTab === "repay" ? (
-              <RepayForm onSubmit={handleRepaySubmit} />
+              <div className="relative">
+                <RepayForm onSubmit={handleRepaySubmit} />
+                <WalletConnectGate />
+              </div>
             ) : (
-              <WithdrawForm onSubmit={handleWithdrawSubmit} />
+              <div className="relative">
+                <WithdrawForm onSubmit={handleWithdrawSubmit} />
+                <WalletConnectGate />
+              </div>
             )}
           </div>
 
